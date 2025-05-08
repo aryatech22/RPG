@@ -1,10 +1,10 @@
-import random
+    import random
 
-mageRange = 1
+    mageRange = 1
 
 
-class Character:
-    def __init__(self, strength, health, constitution, mana, dexterity):
+    class Character:
+        def __init__(self, strength, health, constitution, mana, dexterity):
 
         self.strength = strength
         self.health = health
@@ -49,99 +49,99 @@ class Character:
         return self.health < 1
 
 
-#class Rogue(Character):
-    # attack() Method
-    #def attack(self, target):
-        #dexterity = 16
-        #critical_hit = random.randint(0, 60) < dexterity
-        #damage = self.dexterity * 2
-        #if critical_hit:
-            #damage *= 3
-            #print("*** Critical Hit ***")
-        #damage_dealt = target.take_damage(damage)
-        #return damage_dealt
+    class Rogue(Character):
+        attack() Method
+        def attack(self, target):
+            dexterity = 16
+            critical_hit = random.randint(0, 60) < dexterity
+            damage = self.dexterity * 2
+            if critical_hit:
+                damage *= 3
+                print("*** Critical Hit ***")
+            damage_dealt = target.take_damage(damage)
+            return damage_dealt
+    
+
+    class Mage(Character):
+        # attack() Method
+        def attack(self, target):
+            mana = 70
+            critical_hit = random.randint(0, 200) < mana
+            damage = self.mana * 2
+            if critical_hit:
+                damage *= 2
+                print("*** Critical Hit ***")
+            damage_dealt = target.take_damage(damage)
+            return damage_dealt
 
 
-class Mage(Character):
-    # attack() Method
-    def attack(self, target):
-        mana = 70
-        critical_hit = random.randint(0, 200) < mana
-        damage = self.mana * 2
-        if critical_hit:
-            damage *= 2
-            print("*** Critical Hit ***")
-        damage_dealt = target.take_damage(damage)
-        return damage_dealt
+    class Demon(Character):
+        def attack(self, target):
+            strength = 201
+            critical_hit = random.randint(1, 200) < strength
+                damage = self.strength * 100
+            if critical_hit:
+                damage *= 100
+                print("*** Critical Hit ***")
+            damage_dealt = target.take_damage(damage)
+            return damage_dealt
 
 
-class Demon(Character):
-    def attack(self, target):
-        strength = 201
-        critical_hit = random.randint(1, 200) < strength
-        damage = self.strength * 100
-        if critical_hit:
-            damage *= 100
-            print("*** Critical Hit ***")
-        damage_dealt = target.take_damage(damage)
-        return damage_dealt
+    BladeDemon = Demon(150, 1000, 0, 0, 0)
 
 
-BladeDemon = Demon(150, 1000, 0, 0, 0)
+    class Enemy(Character):
+        def attack(self, target):
+            strength = 14
+            critical_hit = random.randint(1, 300) < strength
+            damage = self.strength * 2
+            if critical_hit:
+                damage *= 2
+                print("*** Critical Hit ***")
+            damage_dealt = target.take_damage(damage)
+            return damage_dealt
 
 
-class Enemy(Character):
-    def attack(self, target):
-        strength = 14
-        critical_hit = random.randint(1, 300) < strength
-        damage = self.strength * 2
-        if critical_hit:
-            damage *= 2
-            print("*** Critical Hit ***")
-        damage_dealt = target.take_damage(damage)
-        return damage_dealt
+    BloodWing = Enemy(35, 300, 0, 17, 14)
+    Troll = Enemy(25, 70, 0, 0, 2)
+    goblin = Enemy(20, 50, 0, 0, 10)
+    Owlbear = Enemy(22, 60, 0, 0, 5)
 
 
-BloodWing = Enemy(35, 300, 0, 17, 14)
-Troll = Enemy(25, 70, 0, 0, 2)
-goblin = Enemy(20, 50, 0, 0, 10)
-Owlbear = Enemy(22, 60, 0, 0, 5)
+    class Fighter(Character):
+        # attack() Method
+        def attack(self, target):
+            strength = 17
+            critical_hit = random.randint(0, 100) < strength
+            damage = self.strength * 2
+            if critical_hit:
+                damage *= 4
+                print("*** Critical Hit ***")
+            damage_dealt = target.take_damage(damage)
+            return damage_dealt
 
 
-class Fighter(Character):
-    # attack() Method
-    def attack(self, target):
-        strength = 17
-        critical_hit = random.randint(0, 100) < strength
-        damage = self.strength * 2
-        if critical_hit:
-            damage *= 4
-            print("*** Critical Hit ***")
-        damage_dealt = target.take_damage(damage)
-        return damage_dealt
+    role = input("Please pick the class your character: \n"
+                 "  Rogue: Close range attacker that deals low amounts of damage with a moderate health bar"
+                 "      Relies on dodging and critical hits, \n"
+                 "      Health: 60, Dex: 17, Str: 13, Mana: 10, Con: 11, \n"
+                 "  \nFighter: Close range tank that deals average amounts of damage with a large health bar,\n"
+                 "      Relies on high constitution and health \n"
+                 "      Health: 150, Dex: 10, Str: 17, Mana: 10, Con: 14,  \n"
+                 "  \nMage: Long range caster that deals mass amounts of damage with an incredibly small health bar,\n"
+                 "      Relies on high damage AOEs and distance from enemies,"
+                 "      Health: 30, Dex: 10, Str: 10, Mana: 70, Con: 10, Int: 15, \n"
+                 "      Spells: Fireball (4->6) * int dmg 10mana, Force Shield +30 health 20mana,\n"
+                 "\n  Please write choice: ")
+    if role == "Rogue" or role == "rogue":
+        player = Rogue(13, 60, 11, 10, 17)
 
 
-role = input("Please pick the class your character: \n"
-             "  Rogue: Close range attacker that deals low amounts of damage with a moderate health bar"
-             "      Relies on dodging and critical hits, \n"
-             "      Health: 60, Dex: 17, Str: 13, Mana: 10, Con: 11, \n"
-             "  \nFighter: Close range tank that deals average amounts of damage with a large health bar,\n"
-             "      Relies on high constitution and health \n"
-             "      Health: 150, Dex: 10, Str: 17, Mana: 10, Con: 14,  \n"
-             "  \nMage: Long range caster that deals mass amounts of damage with an incredibly small health bar,\n"
-             "      Relies on high damage AOEs and distance from enemies,"
-             "      Health: 30, Dex: 10, Str: 10, Mana: 70, Con: 10, Int: 15, \n"
-             "      Spells: Fireball (4->6) * int dmg 10mana, Force Shield +30 health 20mana,\n"
-             "\n  Please write choice: ")
-if role == "Rogue" or role == "rogue":
-    player = Rogue(13, 60, 11, 10, 17)
+    if role == "Mage" or role == "mage":
+        player = Mage(10, 30, 10, 70, 10)
 
-
-if role == "Mage" or role == "mage":
-    player = Mage(10, 30, 10, 70, 10)
-
-if role == "Fighter" or role == "fighter":
-    player = Fighter(17, 150, 14, 10, 10)
+    if role == "Fighter" or role == "fighter":
+        player = Fighter(17, 150, 14, 10, 10)
 
     def attack(self, target):
         strength = 17
@@ -152,18 +152,18 @@ if role == "Fighter" or role == "fighter":
         damage_dealt = target.take_damage(damage)
         return damage_dealt
 
-print("\n(You walk into an inn by the side of the road)\n")
-questPath = input(
-    'Innkeeper: Welcome weary traveler, to my inn. I see that you are a strong adventurer, would you be \n'
-    '           so kind to go on a quest for me? I know a danger that needs to be vanquished, I hear that a red \n'
-    '           mighty dragon known as Vortairn the Vicious lives in the mountains to the east terrorizing the \n'
-    '           surrounding towns. Will you defeat him for me? y/n ')
+    print("\n(You walk into an inn by the side of the road)\n")
+    questPath = input(
+        'Innkeeper: Welcome weary traveler, to my inn. I see that you are a strong adventurer, would you be \n'
+        '           so kind to go on a quest for me? I know a danger that needs to be vanquished, I hear that a red \n'
+        '           mighty dragon known as Vortairn the Vicious lives in the mountains to the east terrorizing the \n'
+        '           surrounding towns. Will you defeat him for me? y/n ')
 
-if questPath == "Y" or questPath == "y" or questPath == "Yes" or questPath == "yes":
-    print("\nInnkeeper: Let the quest begin! But first, sleep\n"
-          "\n*** The Next Day ***\n"
-          "\n* You set off on the dusty path towards the eastern mountains *\n")
-    investigate = input("(You hear noises off the path, do you investigate? y/n) ")
+    if questPath == "Y" or questPath == "y" or questPath == "Yes" or questPath == "yes":
+        print("\nInnkeeper: Let the quest begin! But first, sleep\n"
+              "\n*** The Next Day ***\n"
+              "\n* You set off on the dusty path towards the eastern mountains *\n")
+        investigate = input("(You hear noises off the path, do you investigate? y/n) ")
 
     if investigate == "Y" or investigate == "y" or investigate == "yes" or investigate == "Yes":
         print("\n(As you crest the hill you see a massive goblin camp near the road, but the ambush sentries aren't "
@@ -353,34 +353,17 @@ if questPath == "Y" or questPath == "y" or questPath == "Yes" or questPath == "y
         print("*** GAME OVER ***")
         exit()
 
-elif questPath == "N" or questPath == "n" or questPath == "No" or questPath == "no":
-    print("Innkeeper: Very well tra- \n"
-          "\n *** Crash ***\n"
-          "  GAME OVER\n"
-          "Bandits came and killed you")
-    exit()
-else:
-    print("Sorry, I couldn't hear you")
+    elif questPath == "N" or questPath == "n" or questPath == "No" or questPath == "no":
+        print("Innkeeper: Very well tra- \n"
+              "\n *** Crash ***\n"
+              "  GAME OVER\n"
+              "Bandits came and killed you")
+        exit()
+    else:
+        print("Sorry, I couldn't hear you")
 
-print("This game was created by:\n"
-      "\nDavid Parsons,"
-      "\n&"
-      "\nArya Chellappah,")
+    print("This game was created by:\n"
+         
+          "\nArya Chellappah,")
 
-# if questPath == "fame" or questPath =="Fame":
-#    print("")
-# if questPath == "fortune" or questPath == "Fortune":
-#    print("")
-# if questPath == "power" or questPath == "Power":
-#    print("")
 
-#    "           Welcome weary traveler, to my inn. I see great deal of potential in you, would you \n"
-#    "           be so kind to go on a quest for me? I know of three separate dangers that need to be \n"
-#    "           vanquished, first I hear of a red mighty dragon known as Vortairn the Vicious, or \n"
-#    "           perhaps you like to delve into human affairs. I also hear of a tyrant king named \n"
-#    "           Acheron who rules with an iron fist. Perhaps you only want to line your pockets with \n"
-#    "           gold, if so I have some information for you. Caligula's vault lies in the mountains to \n"
-#    "           the east, it is said to contain the crown of Caligula which can grant untold power to \n"
-#    "           the wearer, but be wary it is the most dangerous path of all. Caligula was a madman \n"
-#    "           commanding the masses, known for his horrific tickling. Be warned, with great power \n"
-#    "           comes great sacrifice. Which path will you take? Fame? Power? or fortune? "
